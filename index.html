@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>TaskFlow – Task management</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<a class="skip" href="#view">Skip to content</a>
+<div class="app">
+  <aside class="side" id="side" aria-label="Sidebar">
+    <div class="logo"><span class="mark" data-i="check"></span>TaskFlow</div>
+    <button class="btn primary add" data-act="add"><span data-i="plus"></span>Add task</button>
+    <nav aria-label="Main"><ul id="nav"></ul></nav>
+    <div class="profile"><span class="avatar" aria-hidden="true">MR</span><div><strong>Maya Rivera</strong><small>Demo account</small></div></div>
+  </aside>
+  <div class="scrim" id="scrim" data-act="closeNav"></div>
+  <div class="main">
+    <header class="bar">
+      <button class="btn icon" data-act="openNav" aria-label="Open navigation" aria-controls="side"><span data-i="menu"></span></button>
+      <span class="logo sm">TaskFlow</span>
+      <button class="btn primary sm-add" data-act="add"><span data-i="plus"></span>Add</button>
+    </header>
+    <main id="view" tabindex="-1"></main>
+  </div>
+</div>
+
+<dialog id="taskDlg" aria-labelledby="dlgTitle">
+  <form id="taskForm" novalidate>
+    <div class="dh"><h2 id="dlgTitle">Add task</h2><button type="button" class="btn icon" data-act="closeDlg" aria-label="Close"><span data-i="x"></span></button></div>
+    <label for="fTitle">Title <span class="req">(required)</span></label>
+    <input id="fTitle" maxlength="120" aria-describedby="eTitle"><p class="err" id="eTitle" role="alert"></p>
+    <label for="fDesc">Description</label><textarea id="fDesc" rows="3" maxlength="500"></textarea>
+    <div class="row2">
+      <div><label for="fCat">Project</label><input id="fCat" list="cats" maxlength="40"><datalist id="cats"></datalist></div>
+      <div><label for="fDue">Due date <span class="req">(required)</span></label><input id="fDue" type="date" aria-describedby="eDue"><p class="err" id="eDue" role="alert"></p></div>
+      <div><label for="fPri">Priority</label><select id="fPri"><option value="low">Low</option><option value="medium">Medium</option><option value="high">High</option></select></div>
+      <div><label for="fSta">Status</label><select id="fSta"><option value="todo">To Do</option><option value="progress">In Progress</option><option value="done">Completed</option></select></div>
+    </div>
+    <div class="dh end"><button type="button" class="btn" data-act="closeDlg">Cancel</button><button class="btn primary" type="submit">Save task</button></div>
+  </form>
+</dialog>
+<dialog id="confirmDlg" aria-labelledby="cTitle">
+  <div class="dh"><h2 id="cTitle">Are you sure?</h2></div>
+  <p id="cMsg"></p>
+  <div class="dh end"><button class="btn" data-act="closeConfirm">Cancel</button><button class="btn danger" id="cOk">Confirm</button></div>
+</dialog>
+<script src="script.js"></script>
+</body>
+</html>
